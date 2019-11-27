@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title> 
+  </head>
+  <body>
+    用户：<input type="text" id="user"><br>
+    密码：<input type="password" id="pass"><br>
+    <input type="button" value="注册" id="reg_btn">
+    <input type="button" value="登录" id="login_btn">
+  </body>
+  <script src="./jquery-3.3.1.js"></script>
+  <script type="text/javascript">
+    window.onload=function (){
+      var oTxtUser=document.getElementById('user');
+      var oTxtPass=document.getElementById('pass');
+
+      // 注册
+      $('#reg_btn').click(function(params) {
+        $.ajax({
+            type : "GET",
+            contentType: "application/json;charset=UTF-8",
+            url : "/reg",
+            data : {act: 'reg', user: oTxtUser.value, pass: oTxtPass.value},
+            //请求成功
+            success : function(result) {
+              var data = JSON.parse(result)
+                alert(data.msg);
+            },
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+
+      })
+      
+      // 登录
+      $('#login_btn').click(function(params) {
+        $.ajax({
+            //请求方式
+            type : "post",
+            //请求的媒体类型
+            contentType: "application/json;charset=UTF-8",
+            //请求地址
+            url : "/login",
+            //数据，json字符串
+            data : {act: 'login', user: oTxtUser.value, pass: oTxtPass.value},
+            //请求成功
+            success : function(result) {
+               var data = JSON.parse(result)
+                alert(data.msg);
+            },
+            //请求失败，包含具体的错误信息
+            error : function(e){
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+
+      })
+
+      
+      
+    };
+  </script>
+</html>
