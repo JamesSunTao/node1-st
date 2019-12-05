@@ -21,7 +21,6 @@ var server=http.createServer(function (req, res){
     console.log('12', POST)  
     //区分——接口、文件
     if(url=='/reg'){   //接口
-      
           //1.检查用户名是否已经有了
           if(users[GET.user]){
             res.write('{"ok": false, "msg": "此用户已存在"}');
