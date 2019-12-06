@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1>注册</h1>  
+      用户：<input type="text" name="user" id ="name"/>
+      密码：<input type="password" name="pwd" id ="pwd"/>
+            <button id="btn">提交</button>
+  
+  <script src="./jquery-3.3.1.js"></script>
+  <script>
+     
+      $("#btn").click(function() {
+        var name = $('#name').val();
+        var pwd =  $('#pwd').val();
+          $.ajax({
+            type : "GET",
+            contentType: "application/json;charset=UTF-8",
+            url : "/register",
+            data : {name:name,pwd:pwd},
+            //请求成功
+            success : function(res) {
+             alert(res.msg)
+            },
+            error : function(e){
+                
+            }
+        })
+
+      })
+  </script>
+  </body>
+</html>
