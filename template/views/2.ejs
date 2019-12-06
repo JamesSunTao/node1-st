@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <%_ for(var i=0;i<arr.length;i++){ %>  //不输出代码,在html中展示为空行
+    <div>用户名：<%=arr[i].name%> 密码：<%=arr[i].pass%></div>
+    <% } %> //不输出代码,在html中展示为空行
+
+    <% 
+       var str="<p>我是标签内容，标签转译</p>"
+    %>
+    <%- str %>
+
+</body>
+</html>
